@@ -11,22 +11,23 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.js"></script>
-    <script src="script.js"></script>
+    <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
-    <div class="container">
+    <img src="images/logo.png" alt="logo" id="logo" class="img-fluid mx-auto d-block mt-3">
+<div class="container">
 	<p id="success"></p>
         <div class="table-wrapper">
             <div class="table-title">
                 <div class="row">
                     <div class="col-sm-6">
-						<h2>Contratos Software</h2>
+						<h2>Contratos de Software</h2>
 					</div>
 					<div class="col-sm-6">
 						<a href="#addModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Adicionar Contrato</span></a>
@@ -41,18 +42,17 @@
                         <th>Valor</th>
 						<th>Data</th>
                         <th>Modulos</th>
-                        <th>ACTION</th>
+                        <th>Operações</th>
                     </tr>
                 </thead>
 				<tbody>
 				
 				<?php
 				$result = mysqli_query($conn,"SELECT * FROM crud");
-					$i=1;
 					while($row = mysqli_fetch_array($result)) {
 				?>
 				<tr id="<?php echo $row["id"]; ?>">
-					<td><?php echo $i; ?></td>
+					<td><?php echo $row["id"]; ?></td>
 					<td><?php echo $row["cliente"]; ?></td>
 					<td><?php echo $row["valor"];?> €</td>
 					<td><?php echo $row["data"]; ?></td>
@@ -72,7 +72,6 @@
                     </td>
 				</tr>
 				<?php
-				$i++;
 				}
 				?>
 				</tbody>
@@ -176,6 +175,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>                                		                            

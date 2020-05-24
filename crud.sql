@@ -1,21 +1,13 @@
 CREATE TABLE `crud` (
-  `id` int(11) NOT NULL,
-  `name` varchar(60) NOT NULL,
-  `email` varchar(30) NOT NULL,
-  `phone` varchar(20) NOT NULL,
-  `city` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id` SERIAL PRIMARY KEY,
+  `cliente` varchar(255) NOT NULL,
+  `valor` varchar(255) NOT NULL,
+  `data` varchar(255) NOT NULL,
+  `modulos` varchar(255) NOT NULL
+);
 
-
-INSERT INTO `crud` (`id`, `name`, `email`, `phone`, `city`) VALUES
-(40, 'divya', 'amohapatra7000@gmail.com', '9114950911', 'balasore'),
-(42, 'Divyasundar sahu', 'amohapatra7000@gmail.com', '999999999', 'balasore'),
-(43, 'arpita', 'amohapatra7000@gmail.com', '9114950911', 'balasore');
-
-ALTER TABLE `crud`
-  ADD PRIMARY KEY (`id`);
-
-
-ALTER TABLE `crud`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
-COMMIT;
+INSERT INTO `crud` VALUES
+	('JoanaA', '20', '01-01-2021', '2'),
+	('Ze', '50', '01-02-2030', '3'),
+	('Xico', '40', '01-05-2025', '5'),
+	('Antonio', '25', '02-05-1980', '2');
