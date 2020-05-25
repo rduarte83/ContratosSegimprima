@@ -4,11 +4,14 @@ include 'database.php';
 if(count($_POST)>0){
 	if($_POST['type']==1){
 		$cliente=$_POST['cliente'];
+        $sw=$_POST['sw'];
+        $contrato=$_POST['contrato'];
 		$valor=$_POST['valor'];
+        $period=$_POST['period'];
+        $data=$_POST['data'];
 		$modulos=$_POST['modulos'];
-		$data=$_POST['data'];
-		$sql = "INSERT INTO `crud`( `cliente`, `valor`,`modulos`,`data`) 
-		VALUES ('$cliente','$valor','$modulos','$data')";
+        $sql = "INSERT INTO crud ( `cliente`,`sw`,`contrato`, `valor`,`period`,`modulos`,`data`) 
+		VALUES ('$cliente','$sw','$contrato','$valor','$period','$modulos','$data')";
 		if (mysqli_query($conn, $sql)) {
 			echo json_encode(array("statusCode"=>200));
 		} 
@@ -22,10 +25,13 @@ if(count($_POST)>0){
 	if($_POST['type']==2){
 		$id=$_POST['id'];
 		$cliente=$_POST['cliente'];
+        $sw=$_POST['sw'];
+        $contrato=$_POST['contrato'];
 		$valor=$_POST['valor'];
-		$modulos=$_POST['modulos'];
+        $period=$_POST['period'];
 		$data=$_POST['data'];
-		$sql = "UPDATE `crud` SET `cliente`='$cliente',`valor`='$valor',`modulos`='$modulos',`data`='$data' WHERE id=$id";
+		$modulos=$_POST['modulos'];
+		$sql = "UPDATE crud SET cliente='$cliente', sw='$sw', contrato='$contrato', valor='$valor', period='$period', modulos='$modulos', data='$data' WHERE id='$id'";
 		if (mysqli_query($conn, $sql)) {
 			echo json_encode(array("statusCode"=>200));
 		} 
@@ -61,5 +67,3 @@ if(count($_POST)>0){
 		mysqli_close($conn);
 	}
 }
-
-?>

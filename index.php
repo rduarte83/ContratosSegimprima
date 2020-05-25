@@ -1,3 +1,6 @@
+<!--TODO Inserir postos adicionais-->
+<!--TODO add e update-->
+
 <?php include 'php/database.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +42,10 @@
                     <tr>
 						<th>ID</th>
                         <th>Cliente</th>
+                        <th>Software</th>
+                        <th>Contrato</th>
                         <th>Valor</th>
+                        <th>Periodicidade</th>
 						<th>Data</th>
                         <th>Modulos</th>
                         <th>Operações</th>
@@ -54,18 +60,24 @@
 				<tr id="<?php echo $row["id"]; ?>">
 					<td><?php echo $row["id"]; ?></td>
 					<td><?php echo $row["cliente"]; ?></td>
+                    <td><?php echo $row["sw"]; ?></td>
+                    <td><?php echo $row["contrato"]; ?></td>
 					<td><?php echo $row["valor"];?> €</td>
+                    <td><?php echo $row["period"];?></td>
 					<td><?php echo $row["data"]; ?></td>
 					<td><?php echo $row["modulos"]; ?></td>
 					<td>
 						<a href="#editModal" class="edit" data-toggle="modal">
-							<i class="material-icons update" data-toggle="tooltip" 
-							data-id="<?php echo $row["id"]; ?>"
-							data-cliente="<?php echo $row["cliente"]; ?>"
-							data-valor="<?php echo $row["valor"]; ?>"
-							data-data="<?php echo $row["data"]; ?>"
-							data-modulos="<?php echo $row["modulos"]; ?>"
-							title="Edit">&#xE254;</i>
+							<i class="material-icons update" data-toggle="tooltip"
+                               data-id="<?php echo $row["id"]; ?>"
+                               data-cliente="<?php echo $row["cliente"]; ?>"
+                               data-sw="<?php echo $row["sw"]; ?>"
+                               data-contrato="<?php echo $row["contrato"]; ?>"
+                               data-valor="<?php echo $row["valor"]; ?>"
+                               data-period="<?php echo $row["period"]; ?>"
+                               data-data="<?php echo $row["data"]; ?>"
+                               data-modulos="<?php echo $row["modulos"]; ?>"
+                               title="Edit">&#xE254;</i>
 						</a>
 						<a href="#deleteModal" class="delete" data-id="<?php echo $row["id"]; ?>" data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
                                                                                                                          title="Delete">&#xE872;</i></a>
@@ -93,18 +105,44 @@
 							<label>Cliente</label>
 							<input type="text" id="cliente" name="cliente" class="form-control" required>
 						</div>
+                        <div class="form-group">
+                            <label>Software</label>
+                            <br>
+                            <select name="sw" id="sw">
+                                <option value="Pix">Pix</option>
+                                <option value="ZoneSoft">ZoneSoft</option>
+                                <option value="Sage">Sage</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Contrato</label>
+                            <br>
+                            <select name="contrato" id="contrato">
+                                <option value="Compra">Compra</option>
+                                <option value="Aluguer">Aluguer</option>
+                            </select>
+                        </div>
 						<div class="form-group">
 							<label>Valor</label>
-							<input type="text" id="valor" name="valor" class="form-control" required>
+							<input type="number" id="valor" name="valor" class="form-control" required>
 						</div>
-						<div class="form-group">
+                        <div class="form-group">
+                            <label>Periodicidade</label>
+                            <br>
+                            <select name="period" id="period">
+                                <option value="Mensal">Mensal</option>
+                                <option value="Trimestral">Trimestral</option>
+                                <option value="Anual">Anual</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Data</label>
+                            <input type="date" id="data" name="data" class="form-control" required>
+                        </div>
+                        <div class="form-group">
 							<label>Módulos</label>
 							<input type="text" id="modulos" name="modulos" class="form-control" required>
 						</div>
-						<div class="form-group">
-							<label>Data</label>
-							<input type="text" id="data" name="data" class="form-control" required>
-						</div>					
 					</div>
 					<div class="modal-footer">
 					    <input type="hidden" value="1" name="type">
@@ -125,23 +163,49 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">
-						<input type="hidden" id="id_u" name="id" class="form-control" required>					
-						<div class="form-group">
-							<label>Cliente</label>
-							<input type="text" id="cliente_u" name="cliente" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Valor</label>
-							<input type="email" id="valor_u" name="valor" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Data</label>
-							<input type="text" id="data_u" name="data" class="form-control" required>
-						</div>
-						<div class="form-group">
-							<label>Módulos</label>
-							<input type="text" id="modulos_u" name="modulos" class="form-control" required>
-						</div>					
+						<input type="hidden" id="id_u" name="id" class="form-control" required>
+                        <div class="form-group">
+                            <label>Cliente</label>
+                            <input type="text" id="cliente_u" name="cliente" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Software</label>
+                            <br>
+                            <select name="sw" id="sw_u">
+                                <option value="Pix">Pix</option>
+                                <option value="ZoneSoft">ZoneSoft</option>
+                                <option value="Sage">Sage</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Contrato</label>
+                            <br>
+                            <select name="contrato" id="contrato_u">
+                                <option value="Compra">Compra</option>
+                                <option value="Aluguer">Aluguer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Valor</label>
+                            <input type="number" id="valor_u" name="valor" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Periodicidade</label>
+                            <br>
+                            <select name="period" id="period_u">
+                                <option value="Mensal">Mensal</option>
+                                <option value="Trimestral">Trimestral</option>
+                                <option value="Anual">Anual</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Data</label>
+                            <input type="date" id="data_u" name="data" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Módulos</label>
+                            <input type="text" id="modulos_u" name="modulos" class="form-control" required>
+                        </div>
 					</div>
 					<div class="modal-footer">
 					<input type="hidden" value="2" name="type">
@@ -157,7 +221,6 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<form>
-						
 					<div class="modal-header">						
 						<h4 class="modal-title">Delete User</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -176,4 +239,4 @@
 		</div>
 	</div>
 </body>
-</html>                                		                            
+</html>

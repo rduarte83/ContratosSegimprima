@@ -5,8 +5,6 @@ $(document).ready( function () {
 	});
 } );
 
-
-
 <!-- Add user -->
 	$(document).on('click','#btn-add',function(e) {
 		var data = $("#user_form").serialize();
@@ -29,12 +27,19 @@ $(document).ready( function () {
 	$(document).on('click','.update',function(e) {
 		var id=$(this).attr("data-id");
 		var cliente=$(this).attr("data-cliente");
+		var sw=$(this).attr("data-sw");
+		var contrato=$(this).attr("data-contrato");
 		var valor=$(this).attr("data-valor");
+		var period=$(this).attr("data-period");
 		var data=$(this).attr("data-data");
 		var modulos=$(this).attr("data-modulos");
+		console.log("OLA")
 		$('#id_u').val(id);
 		$('#cliente_u').val(cliente);
+		$('#sw_u').val(sw);
+		$('#contrato_u').val(contrato);
 		$('#valor_u').val(valor);
+		$('#period_u').val(period);
 		$('#data_u').val(data);
 		$('#modulos_u').val(modulos);
 	});
@@ -48,8 +53,7 @@ $(document).ready( function () {
 			success: function(dataResult){
 					var dataResult = JSON.parse(dataResult);
 					if(dataResult.statusCode==200){
-						$('#editEmployeeModal').modal('hide');
-						alert('Data updated successfully !'); 
+						$('#editModal').modal('hide');
                         location.reload();						
 					}
 					else if(dataResult.statusCode==201){
@@ -73,7 +77,7 @@ $(document).ready( function () {
 				id: $("#id_d").val()
 			},
 			success: function(dataResult){
-					$('#deleteEmployeeModal').modal('hide');
+					$('#deleteModal').modal('hide');
 					$("#"+dataResult).remove();
 			
 			}
