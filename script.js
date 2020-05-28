@@ -1,9 +1,46 @@
 $(document).ready( function () {
-	$('#table').DataTable({
+	$("#table").DataTable({
+		dom: 'Bfrtip',
+		buttons: {
+			buttons: [
+				{ extend: 'print', className: 'btn btn-success' },
+				{ extend: 'pdf', className: 'btn btn-success' },
+				{ extend: 'excel', className: 'btn btn-success' }
+			],
+		},
 		responsive: true,
 		language: { "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese.json" }
 	});
+
+	$('#filter').click (function () {
+
+	});
+
+	getDate();
 } );
+
+function getDate() {
+	var now = new Date();
+	var arrData = new Array();
+	var exp = [];
+
+	$("#table tbody tr").each(function(){
+		var currentRow=$(this);
+		var cli=currentRow.find("td:eq(1)").text();
+		var data=currentRow.find("td:eq(6)").text();
+		var obj={};
+		var diff = (new Date(data).getTime() - now.getTime()) / (1000 * 3600 * 24);
+
+		if (diff <= 30) {
+			exp.push(cli)
+			console.log(cli);
+			//obj.cli=cli_value;
+			//obj.data=diff;
+			//arrData.push(obj);
+		}
+	});
+	alert("Contratos a terminar em menos de 30 dias:\n"+exp);
+};
 
 <!-- Add user -->
 	$(document).on('click','#btn-add',function(e) {
@@ -33,7 +70,6 @@ $(document).ready( function () {
 		var period=$(this).attr("data-period");
 		var data=$(this).attr("data-data");
 		var modulos=$(this).attr("data-modulos");
-		console.log("OLA")
 		$('#id_u').val(id);
 		$('#cliente_u').val(cliente);
 		$('#sw_u').val(sw);

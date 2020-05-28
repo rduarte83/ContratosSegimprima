@@ -1,5 +1,4 @@
 <!--TODO Inserir postos adicionais-->
-<!--TODO add e update-->
 
 <?php include 'php/database.php'; ?>
 <!DOCTYPE html>
@@ -12,14 +11,20 @@
 
     <title>Contratos SW</title>
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.21/b-1.6.2/b-html5-1.6.2/b-print-1.6.2/datatables.min.css"/>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/datatables.min.js"></script>
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jszip-2.5.0/dt-1.10.21/b-1.6.2/b-html5-1.6.2/b-print-1.6.2/datatables.min.js"></script>
+
     <script type="text/javascript" src="script.js"></script>
 </head>
 <body>
@@ -32,9 +37,12 @@
                     <div class="col-sm-6">
 						<h2>Contratos de Software</h2>
 					</div>
-					<div class="col-sm-6">
-						<a href="#addModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Adicionar Contrato</span></a>
+					<div class="col-sm-3">
+						<a href="#filter" id="filter" class="btn btn-warning" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Próximas Renovações</span></a>
 					</div>
+                    <div class="col-sm-3">
+                        <a href="#addModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Adicionar Contrato</span></a>
+                    </div>
                 </div>
             </div>
             <table class="table table-striped table-hover" id="table">
@@ -146,7 +154,7 @@
 					</div>
 					<div class="modal-footer">
 					    <input type="hidden" value="1" name="type">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
 						<button type="button" class="btn btn-success" id="btn-add">Add</button>
 					</div>
 				</form>
@@ -209,7 +217,7 @@
 					</div>
 					<div class="modal-footer">
 					<input type="hidden" value="2" name="type">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancel">
 						<button type="button" class="btn btn-info" id="update">Update</button>
 					</div>
 				</form>
