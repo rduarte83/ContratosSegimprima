@@ -37,9 +37,9 @@
                     <div class="col-sm-6">
 						<h2>Contratos de Software</h2>
 					</div>
-					<div class="col-sm-3">
-						<a href="#filter" id="filter" class="btn btn-warning" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Próximas Renovações</span></a>
-					</div>
+                    <div class="col-sm-3">
+                        <a href="#filterModal" class="btn btn-info" data-toggle="modal"></i> <span>Renovações</span></a>
+                    </div>
                     <div class="col-sm-3">
                         <a href="#addModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Adicionar Contrato</span></a>
                     </div>
@@ -56,6 +56,7 @@
                         <th>Periodicidade</th>
 						<th>Data</th>
                         <th>Modulos</th>
+                        <th>Extras</th>
                         <th>Operações</th>
                     </tr>
                 </thead>
@@ -74,6 +75,7 @@
                     <td><?php echo $row["period"];?></td>
 					<td><?php echo $row["data"]; ?></td>
 					<td><?php echo $row["modulos"]; ?></td>
+                    <td><?php echo $row["postos"]; ?></td>
 					<td>
 						<a href="#editModal" class="edit" data-toggle="modal">
 							<i class="material-icons update" data-toggle="tooltip"
@@ -85,10 +87,10 @@
                                data-period="<?php echo $row["period"]; ?>"
                                data-data="<?php echo $row["data"]; ?>"
                                data-modulos="<?php echo $row["modulos"]; ?>"
+                               data-postos="<?php echo $row["postos"]; ?>"
                                title="Edit">&#xE254;</i>
 						</a>
-						<a href="#deleteModal" class="delete" data-id="<?php echo $row["id"]; ?>" data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
-                                                                                                                         title="Delete">&#xE872;</i></a>
+						<a href="#deleteModal" class="delete" data-id="<?php echo $row["id"]; ?>" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                     </td>
 				</tr>
 				<?php
@@ -96,9 +98,9 @@
 				?>
 				</tbody>
 			</table>
-			
         </div>
     </div>
+
 	<!-- Add Modal HTML -->
 	<div id="addModal" class="modal fade">
 		<div class="modal-dialog">
@@ -151,6 +153,10 @@
 							<label>Módulos</label>
 							<input type="text" id="modulos" name="modulos" class="form-control" required>
 						</div>
+                        <div class="form-group">
+                            <label>Postos Extra</label>
+                            <input type="text" id="postos" name="postos" class="form-control" required>
+                        </div>
 					</div>
 					<div class="modal-footer">
 					    <input type="hidden" value="1" name="type">
@@ -161,7 +167,8 @@
 			</div>
 		</div>
 	</div>
-	<!-- Edit Modal HTML -->
+
+    <!-- Edit Modal HTML -->
 	<div id="editModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -214,6 +221,10 @@
                             <label>Módulos</label>
                             <input type="text" id="modulos_u" name="modulos" class="form-control" required>
                         </div>
+                        <div class="form-group">
+                            <label>Postos Extra</label>
+                            <input type="number" id="postos_u" name="postos" class="form-control" required>
+                        </div>
 					</div>
 					<div class="modal-footer">
 					<input type="hidden" value="2" name="type">
@@ -224,6 +235,7 @@
 			</div>
 		</div>
 	</div>
+
 	<!-- Delete Modal HTML -->
 	<div id="deleteModal" class="modal fade">
 		<div class="modal-dialog">
@@ -239,12 +251,64 @@
 						<p class="text-warning"><small>This action cannot be undone.</small></p>
 					</div>
 					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+						<input type="button" class="btn" data-dismiss="modal" value="Cancel">
 						<button type="button" class="btn btn-danger" id="delete">Delete</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
+
+    <!-- Filter Modal HTML -->
+    <div id="filterModal" class="modal fade">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <form>
+                    <div class="modal-header">
+                        <h4 class="modal-title">Renovações</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-striped table-hover" id="table_filtered">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Cliente</th>
+                                <th>Software</th>
+                                <th>Contrato</th>
+                                <th>Valor</th>
+                                <th>Periodicidade</th>
+                                <th>Data</th>
+                                <th>Modulos</th>
+                                <th>Extras</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <?php
+                            $result = mysqli_query($conn,"SELECT * FROM crud WHERE DATA < (SELECT DATE_ADD(NOW(), INTERVAL 1 MONTH))");
+                            while($row = mysqli_fetch_array($result)) {
+                                ?>
+                                <tr id="<?php echo $row["id"]; ?>">
+                                    <td><?php echo $row["id"]; ?></td>
+                                    <td><?php echo $row["cliente"]; ?></td>
+                                    <td><?php echo $row["sw"]; ?></td>
+                                    <td><?php echo $row["contrato"]; ?></td>
+                                    <td><?php echo $row["valor"];?> €</td>
+                                    <td><?php echo $row["period"];?></td>
+                                    <td><?php echo $row["data"]; ?></td>
+                                    <td><?php echo $row["modulos"]; ?></td>
+                                    <td><?php echo $row["postos"]; ?></td>
+                                </tr>
+                                <?php
+                            }
+                            ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

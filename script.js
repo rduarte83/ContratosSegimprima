@@ -12,10 +12,6 @@ $(document).ready( function () {
 		language: { "url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese.json" }
 	});
 
-	$('#filter').click (function () {
-
-	});
-
 	getDate();
 } );
 
@@ -33,13 +29,12 @@ function getDate() {
 
 		if (diff <= 30) {
 			exp.push(cli)
-			console.log(cli);
 			//obj.cli=cli_value;
 			//obj.data=diff;
 			//arrData.push(obj);
 		}
 	});
-	alert("Contratos a terminar em menos de 30 dias:\n"+exp);
+	//alert("Contratos a terminar em menos de 30 dias:\n"+exp);
 };
 
 <!-- Add user -->
@@ -61,6 +56,7 @@ function getDate() {
 			}
 		});
 	});
+
 	$(document).on('click','.update',function(e) {
 		var id=$(this).attr("data-id");
 		var cliente=$(this).attr("data-cliente");
@@ -70,6 +66,7 @@ function getDate() {
 		var period=$(this).attr("data-period");
 		var data=$(this).attr("data-data");
 		var modulos=$(this).attr("data-modulos");
+		var postos=$(this).attr("data-postos");
 		$('#id_u').val(id);
 		$('#cliente_u').val(cliente);
 		$('#sw_u').val(sw);
@@ -78,7 +75,9 @@ function getDate() {
 		$('#period_u').val(period);
 		$('#data_u').val(data);
 		$('#modulos_u').val(modulos);
+		$('#postos_u').val(postos);
 	});
+
 	<!-- Update -->
 	$(document).on('click','#update',function(e) {
 		var data = $("#update_form").serialize();
@@ -98,11 +97,12 @@ function getDate() {
 			}
 		});
 	});
+
 	$(document).on("click", ".delete", function() { 
 		var id=$(this).attr("data-id");
 		$('#id_d').val(id);
-		
 	});
+
 	$(document).on("click", "#delete", function() { 
 		$.ajax({
 			url: "php/save.php",
@@ -115,7 +115,6 @@ function getDate() {
 			success: function(dataResult){
 					$('#deleteModal').modal('hide');
 					$("#"+dataResult).remove();
-			
 			}
 		});
 	});
