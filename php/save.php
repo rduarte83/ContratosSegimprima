@@ -25,7 +25,7 @@ if(count($_POST)>0){
 
     if($_POST['type']==2) {
         $id=$_POST['id'];
-        $sql = "UPDATE crud SET cliente='$cliente', sw='$sw', contrato='$contrato', valor='$valor', period='$period', modulos='$modulos', data='$data', postos='$postos' WHERE id='$id'";
+        $sql = "UPDATE crud SET cliente='$cliente', sw='$sw', contrato='$contrato', valor='$valor', period='$period', data='$data', modulos='$modulos', postos='$postos' WHERE id='$id'";
         if (mysqli_query($conn, $sql)) {
             echo json_encode(array("statusCode" => 200));
         } else {
