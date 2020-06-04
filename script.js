@@ -1,7 +1,7 @@
 var status = 1;
 
 $(document).ready(function () {
-    $("#table").DataTable({
+    $("table.table").DataTable({
         dom: 'Bfrtip',
         buttons: {
             buttons: [
@@ -15,31 +15,8 @@ $(document).ready(function () {
     });
 });
 
-$(document).on('click', '#filtro', function (e) {
-    if (status == 1) {
-        status = 0;
-        $("#table").hide();
-        $("#table-filtered").show();
-        alert(status);
-    } else {
-        status = 1;
-        $("#table").show();
-        $("#table-filtered").hide();
-        alert(status);
-    };
-});
-
-
-$(document).on('click', '#renew', function (e) {
-    alert("RENOVAR!");
-});
-
-$(document).on('click', '#cancel', function (e) {
-    alert("CANCELAR!");
-});
-
 <!-- Add user -->
-$(document).on('click', '#btn-add', function (e) {
+$(document).on('click', '#btn-add', function () {
     var data = $("#user_form").serialize();
     $.ajax({
         data: data,
@@ -57,7 +34,7 @@ $(document).on('click', '#btn-add', function (e) {
     });
 });
 
-$(document).on('click', '.update', function (e) {
+$(document).on('click', '.update', function () {
     var id = $(this).attr("data-id");
     var cliente = $(this).attr("data-cliente");
     var sw = $(this).attr("data-sw");
@@ -67,6 +44,7 @@ $(document).on('click', '.update', function (e) {
     var data = $(this).attr("data-data");
     var modulos = $(this).attr("data-modulos");
     var postos = $(this).attr("data-postos");
+    var estado = $(this).attr("data-estado");
     $('#id_u').val(id);
     $('#cliente_u').val(cliente);
     $('#sw_u').val(sw);
@@ -76,10 +54,11 @@ $(document).on('click', '.update', function (e) {
     $('#data_u').val(data);
     $('#modulos_u').val(modulos);
     $('#postos_u').val(postos);
+    $('#estado_u').val(estado);
 });
 
 <!-- Update -->
-$(document).on('click', '#update', function (e) {
+$(document).on('click', '#update', function () {
     var data = $("#update_form").serialize();
     $.ajax({
         data: data,
@@ -97,6 +76,7 @@ $(document).on('click', '#update', function (e) {
     });
 });
 
+<!-- Delete -->
 $(document).on("click", ".delete", function () {
     var id = $(this).attr("data-id");
     $('#id_d').val(id);
@@ -114,6 +94,57 @@ $(document).on("click", "#delete", function () {
         success: function (dataResult) {
             $('#deleteModal').modal('hide');
             $("#" + dataResult).remove();
+        }
+    });
+});
+
+$(document).on('click', '#filtro', function () {
+    if (status == 1) {
+        status = 0;
+        $("#table").hide();
+        $("#table_wrapper").hide();
+        $("#table-filtered").show();
+        $("#table-filtered_wrapper").show();
+        $("#filtro").text("Limpar Filtro");
+    } else {
+        status = 1;
+        $("#table").show();
+        $("#table_wrapper").show();
+        $("#table-filtered").hide();
+        $("#table-filtered_wrapper").hide();
+        $("#filtro").text("Filtrar Renovações");
+    };
+});
+
+$(document).on("click", "#renew", function () {
+    $.ajax({
+        url: "php/save.php",
+        type: "POST",
+        cache: false,
+        data: {
+            type: 4,
+            id: $(this).attr("data-id"),
+            data: $(this).attr("data-data")
+        },
+        success: function (dataResult) {
+            alert("Contrato Renovado!");
+            location.reload();
+        }
+    });
+});
+
+$(document).on('click', '#cancel', function () {
+    $.ajax({
+        url: "php/save.php",
+        type: "POST",
+        cache: false,
+        data: {
+            type: 5,
+            id: $(this).attr("data-id"),
+        },
+        success: function (dataResult) {
+            alert("Contrato Cancelado!");
+            location.reload();
         }
     });
 });
