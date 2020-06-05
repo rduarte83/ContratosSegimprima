@@ -13,7 +13,7 @@ if(count($_POST)>0){
         $postos=$_POST['postos'];
         $estado=$_POST['estado'];
 
-        $sql = "INSERT INTO crud ( `cliente`,`sw`,`contrato`, `valor`,`period`,`data`,`modulos`,`postos`,`estado`) 
+        $sql = "INSERT INTO cs ( `cliente`,`sw`,`contrato`, `valor`,`period`,`data`,`modulos`,`postos`,`estado`) 
 		VALUES ('$cliente','$sw','$contrato','$valor','$period','$data','$modulos','$postos','$estado')";
 		if (mysqli_query($conn, $sql)) {
 			echo json_encode(array("statusCode"=>200));
@@ -36,7 +36,7 @@ if(count($_POST)>0){
         $postos=$_POST['postos'];
         $estado=$_POST['estado'];
 
-        $sql = "UPDATE crud SET cliente='$cliente', sw='$sw', contrato='$contrato', valor='$valor', period='$period', data='$data', modulos='$modulos', postos='$postos', estado='$estado' WHERE id='$id'";
+        $sql = "UPDATE cs SET cliente='$cliente', sw='$sw', contrato='$contrato', valor='$valor', period='$period', data='$data', modulos='$modulos', postos='$postos', estado='$estado' WHERE id='$id'";
         if (mysqli_query($conn, $sql)) {
             echo json_encode(array("statusCode" => 200));
         } else {
@@ -47,7 +47,7 @@ if(count($_POST)>0){
 
     if($_POST['type']==3) {
         $id=$_POST['id'];
-        $sql = "DELETE FROM `crud` WHERE id=$id ";
+        $sql = "DELETE FROM `cs` WHERE id=$id ";
         if (mysqli_query($conn, $sql)) {
             echo $id;
         }
@@ -59,7 +59,7 @@ if(count($_POST)>0){
     if($_POST['type']==4) {
         $id=$_POST['id'];
         $data=$_POST['data'];
-        $sql = "UPDATE `CRUD` SET `data`= DATE_ADD('$data',INTERVAL 1 YEAR) WHERE id='$id'";
+        $sql = "UPDATE `cs` SET `data`= DATE_ADD('$data',INTERVAL 1 YEAR) WHERE id='$id'";
         if (mysqli_query($conn, $sql)) {
             echo $id;
         }
@@ -71,7 +71,7 @@ if(count($_POST)>0){
 
     if($_POST['type']==5) {
         $id=$_POST['id'];
-        $sql = "UPDATE `CRUD` SET `estado`= 'Inactivo' WHERE id='$id'";
+        $sql = "UPDATE `cs` SET `estado`= 'Inactivo' WHERE id='$id'";
         if (mysqli_query($conn, $sql)) {
             echo $id;
         }

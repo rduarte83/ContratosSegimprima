@@ -61,7 +61,7 @@
         </thead>
         <tbody>
         <?php
-        $result = mysqli_query($conn, "SELECT * FROM crud");
+        $result = mysqli_query($conn, "SELECT * FROM cs");
         while ($row = mysqli_fetch_array($result)) {
             ?>
             <tr id="<?php echo $row["id"]; ?>">
@@ -121,7 +121,7 @@
         <tbody>
 
         <?php
-        $result = mysqli_query($conn, "SELECT * FROM crud WHERE DATA < (SELECT DATE_ADD(NOW(), INTERVAL 1 MONTH))");
+        $result = mysqli_query($conn, "SELECT * FROM cs WHERE DATA < (SELECT DATE_ADD(NOW(), INTERVAL 1 MONTH))");
         while ($row = mysqli_fetch_array($result)) {
             ?>
             <tr id="<?php echo $row["id"]; ?>">

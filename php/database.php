@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "123";
-$dbname = "crud";
+$dbname = "segimprima";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
