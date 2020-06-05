@@ -53,7 +53,7 @@
             <th>Valor</th>
             <th>Periodicidade</th>
             <th>Data</th>
-            <th>Modulos</th>
+            <th>Módulos</th>
             <th>Extras</th>
             <th>Estado</th>
             <th>Operações</th>
@@ -88,10 +88,10 @@
                            data-modulos="<?php echo $row["modulos"]; ?>"
                            data-postos="<?php echo $row["postos"]; ?>"
                            data-estado="<?php echo $row["estado"]; ?>"
-                           title="Edit">&#xE254;</i>
+                           title="Editar">&#xE254;</i>
                     </a>
                     <a href="#deleteModal" class="delete" data-id="<?php echo $row["id"]; ?>" data-toggle="modal">
-                        <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                        <i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i>
                     </a>
                 </td>
             </tr>
@@ -112,7 +112,7 @@
             <th>Valor</th>
             <th>Periodicidade</th>
             <th>Data</th>
-            <th>Modulos</th>
+            <th>Módulos</th>
             <th>Extras</th>
             <th>Estado</th>
             <th>Operações</th>
@@ -308,13 +308,13 @@
         <div class="modal-content">
             <form>
                 <div class="modal-header">
-                    <h4 class="modal-title">Delete User</h4>
+                    <h4 class="modal-title">Eliminar Registo</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="id_d" name="id" class="form-control">
-                    <p>Are you sure you want to delete this Record?</p>
-                    <p class="text-warning"><small>This action cannot be undone.</small></p>
+                    <p>Tem a certeza que deseja eliminar este registo?</p>
+                    <p class="text-warning"><small>Esta operação não pode ser revertida.</small></p>
                 </div>
                 <div class="modal-footer">
                     <input type="button" class="btn" data-dismiss="modal" value="Cancel">
