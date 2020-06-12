@@ -46,7 +46,6 @@
     <table class="table table-striped table-hover" id="table">
         <thead>
         <tr>
-            <th>ID</th>
             <th>Cliente</th>
             <th>Software</th>
             <th>Contrato</th>
@@ -65,7 +64,6 @@
         while ($row = mysqli_fetch_array($result)) {
             ?>
             <tr id="<?php echo $row["id"]; ?>">
-                <td><?php echo $row["id"]; ?></td>
                 <td><?php echo $row["cliente"]; ?></td>
                 <td><?php echo $row["sw"]; ?></td>
                 <td><?php echo $row["contrato"]; ?></td>
@@ -105,7 +103,6 @@
     <table class="table table-striped table-hover" id="table-filtered">
         <thead>
         <tr>
-            <th>ID</th>
             <th>Cliente</th>
             <th>Software</th>
             <th>Contrato</th>
@@ -125,7 +122,6 @@
         while ($row = mysqli_fetch_array($result)) {
             ?>
             <tr id="<?php echo $row["id"]; ?>">
-                <td><?php echo $row["id"]; ?></td>
                 <td><?php echo $row["cliente"]; ?></td>
                 <td><?php echo $row["sw"]; ?></td>
                 <td><?php echo $row["contrato"]; ?></td>
