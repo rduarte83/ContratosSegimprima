@@ -27,19 +27,32 @@
 <body>
 <img src="images/logo.png" alt="logo" id="logo" class="img-fluid mx-auto d-block mt-3">
 <div class="container">
-    <p id="success"></p>
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-md">
                     <h2>Contratos de Software</h2>
                 </div>
-                <div class="col-sm-3">
-                    <button class="btn btn-info" id="filtro">Filtrar Renovações</button>
+                <div class="col-md btn-group btn-group-toggle" data-toggle="buttons">
+                    <label class="btn btn-info active">
+                        <input type="radio" name="options" id="def" autocomplete="off" checked>Limpar
+                    </label>
+                    <label class="btn btn-info">
+                        <input type="radio" name="options" id="pix" autocomplete="off">Pix
+                    </label>
+                    <label class="btn btn-info">
+                        <input type="radio" name="options" id="zonesoft" autocomplete="off">ZoneSoft
+                    </label>
+                    <label class="btn btn-info">
+                        <input type="radio" name="options" id="kaspersy" autocomplete="off">Kaspersky
+                    </label>
+
                 </div>
-            <div class="col-sm-3">
+            <div class="col-md">    
                 <a href="#addModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i>
-                    <span>Adicionar Contrato</span></a>
+                <span>Novo</span></a>
+                <button class="btn btn-info" id="filtro" data-toggle="button">A expirar</button>
+                
             </div>
         </div>
     </div>

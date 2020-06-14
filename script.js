@@ -13,9 +13,19 @@ $(document).ready(function () {
         responsive: true,
         language: {"url": "https://cdn.datatables.net/plug-ins/1.10.21/i18n/Portuguese.json"}
     });
+
+    $(".btn-group-toggle input").click(function() {
+        var id = $(this).attr("id");
+        if (id != "def") {
+            alert(id);
+        }
+
+    });
+
+
 });
 
-<!-- Add user -->
+//<!-- Add user -->
 $(document).on('click', '#btn-add', function () {
     var data = $("#user_form").serialize();
     $.ajax({
@@ -57,7 +67,7 @@ $(document).on('click', '.update', function () {
     $('#estado_u').val(estado);
 });
 
-<!-- Update -->
+//<!-- Update -->
 $(document).on('click', '#update', function () {
     var data = $("#update_form").serialize();
     $.ajax({
@@ -76,7 +86,7 @@ $(document).on('click', '#update', function () {
     });
 });
 
-<!-- Delete -->
+//<!-- Delete -->
 $(document).on("click", ".delete", function () {
     var id = $(this).attr("data-id");
     $('#id_d').val(id);
@@ -105,14 +115,14 @@ $(document).on('click', '#filtro', function () {
         $("#table_wrapper").hide();
         $("#table-filtered").show();
         $("#table-filtered_wrapper").show();
-        $("#filtro").text("Limpar Filtro");
+        $("#filtro").text("Todos");
     } else {
         status = 1;
         $("#table").show();
         $("#table_wrapper").show();
         $("#table-filtered").hide();
         $("#table-filtered_wrapper").hide();
-        $("#filtro").text("Filtrar Renovações");
+        $("#filtro").text("A expirar");
     };
 });
 
