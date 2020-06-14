@@ -8,7 +8,7 @@ body {
 .table-wrapper {
     background: #fff;
     padding: 20px 25px;
-    margin: 30px 0;
+    margin: 20px 0px 0px 0px;
     border-radius: 3px;
     box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
 }
@@ -30,10 +30,7 @@ body {
     color: #fff;
     float: right;
     font-size: 13px;
-    border-radius: 2px;
     outline: none !important;
-    border-color:#435d7d;
-    margin-left: 10px;
 }
 
 .table-title .btn i {
@@ -49,7 +46,6 @@ body {
 table.table td:last-child i {
     font-size: 24px;
     margin: 0 5px;
-    font-weight: bolder;
 }
 
 table.table td:nth-child(6) {
@@ -57,11 +53,11 @@ table.table td:nth-child(6) {
 }
 
 table.table td a.edit {
-    color: #FFC107;
+    color: orange;
 }
 
 table.table td a.delete {
-    color: #F44336;
+    color: red;
 }
 
 /* Modal styles */
@@ -94,21 +90,13 @@ table.table td a.delete {
 }
 
 #logo {
-    max-width: 20%;
+    max-width: 7%;
 }
 
 #renew {
-    color: green;
+    color: #28a745;
 }
 
 #cancel {
     color: red;
-}
-
-#table-filtered {
-    display: none;
-}
-
-#table-filtered_wrapper {
-    display: none;
 }
