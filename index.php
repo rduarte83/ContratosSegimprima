@@ -26,17 +26,13 @@
 </head>
 <body>
 <div class="container">
-
-
-
-
     <div class="table-wrapper">
         <div class="table-title">
             <div class="row">
-                <div class="col-md-5">
+                <div class="col-md">
                     <h2>Contratos de Software</h2>
                 </div>
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <div class="btn-group btn-group-toggle col-md" data-toggle="buttons">
                     <label class="btn btn-info">
                         <input type="radio" name="options" id="pix" autocomplete="off">Pix
                     </label>
@@ -45,6 +41,9 @@
                     </label>
                     <label class="btn btn-info">
                         <input type="radio" name="options" id="sage" autocomplete="off">Sage
+                    </label>
+                    <label class="btn btn-info">
+                        <input type="radio" name="options" id="ks" autocomplete="off">Kaspersky
                     </label>
                     <label class="btn btn-info active">
                         <input type="radio" name="options" id="def" autocomplete="off" checked>Limpar
@@ -102,6 +101,8 @@
                             <option value="Pix">Pix</option>
                             <option value="ZoneSoft">ZoneSoft</option>
                             <option value="Sage">Sage</option>
+                            <option value="Kaspersky">Kaspersky</option>
+
                         </select>
                     </div>
                     <div class="form-group">
@@ -179,6 +180,7 @@
                             <option value="Pix">Pix</option>
                             <option value="ZoneSoft">ZoneSoft</option>
                             <option value="Sage">Sage</option>
+                            <option value="Kaspersky">Kaspersky</option>
                         </select>
                     </div>
                     <div class="form-group">

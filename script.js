@@ -60,7 +60,6 @@ $(document).on('submit', '#add_form', function () {
     });
 });
 
-//<!-- Update -->
 $(document).on('click', '.edit', function () {
     var id = $(this).attr("data-id");
     var cliente = $(this).closest("tr").find("td:nth-child(1)").text();
@@ -101,7 +100,6 @@ $(document).on('submit', '#edit_form', function () {
     });
 });
 
-//<!-- Delete -->
 $(document).on("click", ".delete", function () {
     var id = $(this).attr("data-id");
     $('#id_d').val(id);
