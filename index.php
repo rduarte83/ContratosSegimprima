@@ -85,7 +85,7 @@
 <div id="addModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="post" id="user_form" enctype="multipart/form-data">
+            <form method="post" id="add_form" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h4 class="modal-title">Adicionar Contrato</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -114,7 +114,7 @@
                     </div>
                     <div class="form-group">
                         <label>Valor</label>
-                        <input type="number" id="valor" name="valor" class="form-control" required>
+                        <input type="number" step="0.01" id="valor" name="valor" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Periodicidade</label>
@@ -127,7 +127,7 @@
                     </div>
                     <div class="form-group">
                         <label>Data</label>
-                        <input type="date" id="data" name="data" class="form-control" required>
+                        <input type="date" id="data" name="data" value="2000-01-01" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Módulos</label>
@@ -135,7 +135,7 @@
                     </div>
                     <div class="form-group">
                         <label>Postos Extra</label>
-                        <input type="text" id="postos" name="postos" class="form-control" required>
+                        <input type="number" id="postos" name="postos" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Estado</label>
@@ -161,7 +161,7 @@
 <div id="editModal" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form method="post" id="update_form" enctype="multipart/form-data">
+            <form method="post" id="edit_form" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h4 class="modal-title">Editar Contrato</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -191,7 +191,7 @@
                     </div>
                     <div class="form-group">
                         <label>Valor</label>
-                        <input type="number" id="valor_u" name="valor" class="form-control" required>
+                        <input type="number" step="0.01" id="valor_u" name="valor" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label>Periodicidade</label>

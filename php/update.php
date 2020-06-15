@@ -8,7 +8,7 @@ $statement = $conn->prepare("
 					");
 $result = $statement->execute(
     array(
-        ':id'	=>	$_POST["id"],
+        ':id'	    =>	$_POST["id"],
         ':cliente'	=>	$_POST["cliente"],
         ':sw'	    =>	$_POST["sw"],
         ':contrato'	=>	$_POST["contrato"],

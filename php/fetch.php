@@ -19,7 +19,7 @@ foreach ($result as $row) {
     $sub_array[] = $row["modulos"];
     $sub_array[] = $row["postos"];
     $sub_array[] = $row["estado"];
-    $sub_array[] = '<a href="#editModal" class="edit" data-id="' . $row["id"] . ' "data-data="' .$row["data"].'" data-toggle="modal">
+    $sub_array[] = '<a href="#editModal" class="edit" data-id="' . $row["id"] . ' " data-data="' .$row["data"].'" data-toggle="modal">
                         <i class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="tooltip" title="Editar"></i>
                     </a>
                     <a href="#deleteModal" class="delete" data-id="' . $row["id"] . '" data-toggle="modal">

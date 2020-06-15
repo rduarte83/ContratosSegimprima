@@ -44,7 +44,7 @@ $(document).on('click', '.btn-group-toggle input', function () {
 
 
 //<!-- Add user -->
-$(document).on('submit', '#user_form', function () {
+$(document).on('submit', '#add_form', function () {
     $.ajax({
         data: new FormData(this),
         contentType: false,
@@ -61,7 +61,7 @@ $(document).on('submit', '#user_form', function () {
 });
 
 //<!-- Update -->
-$(document).on('click', '.update', function () {
+$(document).on('click', '.edit', function () {
     var id = $(this).attr("data-id");
     var cliente = $(this).closest("tr").find("td:nth-child(1)").text();
     var sw = $(this).closest("tr").find("td:nth-child(2)").text();
@@ -85,7 +85,7 @@ $(document).on('click', '.update', function () {
     $('#estado_u').val(estado);
 });
 
-$(document).on('submit', '#update_form', function () {
+$(document).on('submit', '#edit_form', function () {
     $.ajax({
         type: "post",
         url: "php/update.php",

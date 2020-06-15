@@ -23,7 +23,7 @@ foreach ($result as $row) {
                         <i class="fa fa-pencil-square-o" aria-hidden="true" data-toggle="tooltip" title="Editar"></i>
                     </a>
                     <a href="#deleteModal" class="delete" data-id="' . $row["id"] . '" data-toggle="modal">
-                        <i class="fa fa-times" aria-hidden="true" data-toggle="tooltip" title="Eliminar"></i>
+                        <i class="fa fa-trash" aria-hidden="true" data-toggle="tooltip" title="Eliminar"></i>
                     </a>';
     $data[] = $sub_array;
 }
